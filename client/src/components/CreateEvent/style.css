@@ -1,0 +1,31 @@
+
+.react-date-picker__wrapper {
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.react-time-picker__wrapper {
+    background: white;
+    border-radius: 3px;
+}
+
+.call-container {
+    background: #ececec;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+
+.btn-group>.btn, .btn-group-vertical>.btn {
+    margin: 0;
+}
+
+iframe {
+    margin: 10px 0;
+}
+
+.call-container {
+    background: rgb(235, 235, 235);
+    padding: 10px;
+    border-radius: 3px
+}

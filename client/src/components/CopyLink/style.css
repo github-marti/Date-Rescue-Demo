@@ -1,0 +1,5 @@
+textarea.form-control {
+    max-height: 40px;
+    margin: 10px 0;
+    resize: none;
+}

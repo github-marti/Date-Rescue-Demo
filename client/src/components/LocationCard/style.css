@@ -1,0 +1,10 @@
+#thumbsup {
+    margin-right: 40px;
+    border-color: rgb(66, 66, 207);
+    box-shadow: 3px 3px 5px #888888
+}
+
+#thumbsdown {
+    border-color: rgb(255, 34, 78);
+    box-shadow: 3px 3px 5px #888888
+}

@@ -1,0 +1,16 @@
+.signUp{
+    background-image:url(couple-on-date.jpg);
+    background-size: cover;
+    height:100%;
+    background-repeat: no-repeat;
+}
+
+.form {
+    padding: 15px;
+    background-color:#b7ada4;
+}
+
+
+.btn {
+    margin: 15px
+}
