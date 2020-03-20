@@ -31,7 +31,7 @@ module.exports = function () {
 
                         // if the new call is sooner in the future than the upcoming call, update the server-side timer to the new call
                         if (newCall < upcomingCall) {
-                            updateTimer(newCall, req.shortid, call_type, phoneNumber);
+                            updateTimer(newCall, req.shortid, callType, phoneNumber);
                         }
                     
                     // if there are no upcoming calls, update the server-side time to the new call

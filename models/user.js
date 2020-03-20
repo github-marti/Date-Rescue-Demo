@@ -29,8 +29,8 @@ module.exports = function(sequelize, DataTypes) {
         unique: true,
         validate: {
             len: {
-                args: [10, 11],
-                msg: "Phone number must be between 10 and 11 numbers long."
+                args: [10],
+                msg: "Phone number must be 10 numbers long."
             }
         }
     },
