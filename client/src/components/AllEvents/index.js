@@ -21,7 +21,7 @@ function AllEvents() {
     }, [state.userid, dispatch]);
 
     return (
-        <div style={{}}>
+        <div>
             {state.allEvents ? (
                 <div>
                     {state.allEvents.map(event => {

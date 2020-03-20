@@ -33,6 +33,7 @@ function CreateEvent() {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
+        console.log(state.newEvent);
         let initialEvent = await API.saveEvent({
             event_name: state.newEvent.event_name,
             event_date: state.newEvent.event_date.split('T')[0],
@@ -55,6 +56,7 @@ function CreateEvent() {
                 call_type: state.newEvent.call_type
             })
         };
+
         // proceed to save image and update event with image link if image is detected AND initial event data was saved
         if (eventImage && initialEvent.data) {
             let formData = new FormData();
@@ -81,7 +83,7 @@ function CreateEvent() {
             <div><input className="form-control" type="text" name="event_name" required onChange={state.handleInputChange} /></div>
             <label className="font-weight-bold"> Set Date Time</label>
             <div>
-                <DatePicker className="mr-8" value={state.newEvent && state.newEvent.event_date ? state.newEvent.event_date : new Date()} onChange={state.handleDateChange} minDate={new Date()} />
+                <DatePicker className="mr-8" value={state.newEvent && state.newEvent.event_date ? new Date(state.newEvent.event_date) : new Date()} onChange={state.handleDateChange} minDate={new Date()} />
                 <TimePicker onChange={state.handleTimeChange} disableClock={true} />
             </div>
             <label className="font-weight-bold">Set Date Location</label>

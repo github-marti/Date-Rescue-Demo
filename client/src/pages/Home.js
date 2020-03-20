@@ -32,10 +32,12 @@ function Home() {
           eventAPI
             .getEvents(state.userid)
             .then(results => {
-              dispatch({
-                type: SET_NEW_EVENT,
-                newEvent: results.data[0]
-              });
+              if (results.data[0]) {
+                dispatch({
+                  type: SET_NEW_EVENT,
+                  newEvent: results.data[0]
+                });
+              }
             })
             .catch(err => {
               console.log(err);

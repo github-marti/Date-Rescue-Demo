@@ -2,7 +2,6 @@ import React, { createContext, useReducer, useContext } from "react";
 import {
   LOGIN_USER,
   LOGOUT_USER,
-  SET_RELOAD,
   SET_LOCATION,
   UPDATE_EVENT_ACTIVE,
   UPDATE_HOME_ACTIVE,
@@ -144,7 +143,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     reload: false,
     autocomplete: "",
     newEvent: {
-      event_date: new Date(),
+      event_date: moment.utc().local().format(),
     },
     upcomingCall: {},
     upcomingText: {},
@@ -179,7 +178,6 @@ const StoreProvider = ({ value = [], ...props }) => {
     },
     handleDateChange: date => {
       let eventDate = moment.utc(date).local().format();
-      console.log("EVENT DATE", eventDate);
       dispatch({
         type: UPDATE_EVENT,
         column: "event_date",
@@ -194,7 +192,6 @@ const StoreProvider = ({ value = [], ...props }) => {
       });
     },
     handleCallTime: time => {
-      console.log("CALL TIME", time);
       dispatch({
         type: UPDATE_EVENT,
         column: "call_time",

@@ -1,3 +1,7 @@
 .canceled {
     color: red;
 }
+
+button {
+    margin-left: 0!important;
+}
