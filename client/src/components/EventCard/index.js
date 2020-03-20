@@ -8,6 +8,7 @@ import { Card, CardBody } from "reactstrap";
 import { useStoreContext } from "../../utils/GlobalState";
 import { SET_NEW_EVENT } from "../../utils/actions";
 import API from "../../utils/eventAPI";
+import shortid from "shortid";
 import "./style.css";
 
 function EventCard(props) {
@@ -17,7 +18,6 @@ function EventCard(props) {
   const [deleteShow, setDeleteShow] = useState(false);
 
   const handleShow = event => {
-    console.log(props);
     let name = event.target.name;
     if (name === "update") {
       dispatch({
@@ -103,7 +103,7 @@ function EventCard(props) {
 
   const handleCancel = event => {
     event.preventDefault();
-    API.cancelEvent(props.id)
+    API.updateEvent(props.id, { shortid: shortid.generate(), active: false })
       .then(() => {
         API.cancelCall(props.id, props.callid)
           .then(() => {

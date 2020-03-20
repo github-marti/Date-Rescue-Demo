@@ -12,15 +12,13 @@ const storage = multer.diskStorage({
   }
 });
 const upload = multer({ storage: storage });
-const path = require('path');
 
 module.exports = function (app) {
   app.get("/api/users/:userid/events", eventsController.getAll);
   app.get("/api/users/:userid/events/:id", eventsController.getOne);
   app.get("/api/events/:shortid", eventsController.getByShortId);
   app.post("/api/events", eventsController.create);
-  app.post("/api/events/:id/images/upload", upload.single('image'), eventsController.uploadImage);
+  app.post("/api/events/:id/image", upload.single('image'), eventsController.uploadImage);
   app.put("/api/events/:id", eventsController.update);
-  app.put("/api/events/cancel/:id", eventsController.cancel);
   app.delete("/api/events/:id", eventsController.delete);
 }

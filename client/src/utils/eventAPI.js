@@ -19,7 +19,7 @@ export default {
   },
   // Saves image to public/images
   saveImage: function(eventid, formData) {
-    return axios.post(`/api/events/${eventid}/images/upload`, formData, {
+    return axios.post(`/api/events/${eventid}/images`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
     });
   },
@@ -35,9 +35,6 @@ export default {
   // Updates existing event with given information
   updateEvent: function(eventid, eventData) {
     return axios.put(`/api/events/${eventid}`, eventData);
-  },
-  cancelEvent: function(eventid) {
-    return axios.put(`/api/events/cancel/${eventid}`);
   },
   // Deletes event by id
   deleteEvent: function(eventid) {

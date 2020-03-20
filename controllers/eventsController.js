@@ -102,17 +102,6 @@ module.exports = {
         res.send(err);
       });
   },
-  cancel: function(req, res) {
-    db.Event.update(
-      { shortid: shortid.generate(), active: false },
-      { where: { id: req.params.id } }
-    )
-      .then(results => res.json(results))
-      .catch(err => {
-        console.log(err);
-        res.send(err);
-      });
-  },
   delete: function(req, res) {
     db.Event.destroy({ where: { id: req.params.id } })
       .then(results => res.json(results))
