@@ -153,7 +153,14 @@ function EventCard(props) {
             <p>
               <Moment date={props.event_date} format="MMMM Do YYYY" />
             </p>
-            <p>{state.formatTime(props.event_time)}</p>
+            <p>
+              <Moment
+                date={Date.parse(
+                  `${props.event_date.split("T")[0]}T${props.event_time}:00.000`
+                )}
+                format="h:mm A"
+              />
+            </p>
             <p>{props.event_location}</p>
             <iframe
               title="google-maps"
@@ -170,7 +177,17 @@ function EventCard(props) {
             {props.call_time ? (
               <div className="call-container">
                 <p className="font-weight-bold">Scheduled Call</p>
-                <p>Call time: {state.formatTime(props.call_time)}</p>
+                <p>
+                  Call time:{" "}
+                  <Moment
+                    date={Date.parse(
+                      `${props.event_date.split("T")[0]}T${
+                        props.call_time
+                      }:00.000`
+                    )}
+                    format="h:mm A"
+                  />
+                </p>
                 <p>Call type: {props.call_type}</p>
               </div>
             ) : (
@@ -211,17 +228,23 @@ function EventCard(props) {
                 >
                   Cancel Date
                 </button>
+                <button
+                  className="btn btn-danger"
+                  name="delete"
+                  onClick={handleShow}
+                >
+                  Delete Date
+                </button>
               </div>
             ) : (
-              <></>
+              <button
+                className="btn btn-danger"
+                name="delete"
+                onClick={handleShow}
+              >
+                Delete Date
+              </button>
             )}
-            <button
-              className="btn btn-warning"
-              name="delete"
-              onClick={handleShow}
-            >
-              Delete Date
-            </button>
             <UpdateModal
               show={updateShow}
               event_name={props.event_name}
