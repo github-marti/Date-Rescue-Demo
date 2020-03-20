@@ -31,7 +31,7 @@ const getUpcoming = () => {
         );
         const currentTime = Date.parse(new Date());
         const callID = results.shortid;
-        const callType = results.calltype;
+        const callType = results.call_type;
         const phoneNumber = results.Event.User.phoneNumber;
 
         // in case of a server interruption, proceed to make calls if it is within 15 minutes scheduled time
@@ -48,7 +48,6 @@ const getUpcoming = () => {
 };
 
 const makeCall = (callType, phoneNumber) => {
-
   // change the type of call made based on the user's choice on event creation
   if (callType === "Best Friend Breakup") {
     client.calls
@@ -60,12 +59,22 @@ const makeCall = (callType, phoneNumber) => {
       })
       .then(call => console.log(call.sid))
       .catch(err => console.log(err));
-
   } else if (callType === "Family Emergency") {
     client.calls
       .create({
         url:
           "https://handler.twilio.com/twiml/EH1699dedbdae8cdda05de2245e82af5e4",
+        to: `+1${phoneNumber}`,
+        from: "+19088420029"
+      })
+      .then(call => console.log(call.sid))
+      .catch(err => console.log(err));
+  // just in case callType doesn't come through
+  } else {
+    client.calls
+      .create({
+        url:
+          "https://handler.twilio.com/twiml/EH6a3dcba4b4d91fdfb9c9c2752d90da77",
         to: `+1${phoneNumber}`,
         from: "+19088420029"
       })
