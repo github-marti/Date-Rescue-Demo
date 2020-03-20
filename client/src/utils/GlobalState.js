@@ -177,7 +177,6 @@ const StoreProvider = ({ value = [], ...props }) => {
       };
     },
     handleDateChange: date => {
-      console.log('date', date);
       let eventDate = moment.utc(date).local().format();
       dispatch({
         type: UPDATE_EVENT,
@@ -193,7 +192,6 @@ const StoreProvider = ({ value = [], ...props }) => {
       });
     },
     handleCallTime: time => {
-      console.log(time);
       dispatch({
         type: UPDATE_EVENT,
         column: "call_time",

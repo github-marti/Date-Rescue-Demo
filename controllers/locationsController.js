@@ -33,7 +33,6 @@ module.exports = {
         .catch(err => res.status(422).send(err))
     },
     updatelike: function (req, res) {
-        console.log(req.body, req.params.id)
         db.Location.update({location_like:req.body.likes+1},
             {where: {
                 id: req.params.id

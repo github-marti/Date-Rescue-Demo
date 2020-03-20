@@ -79,7 +79,6 @@ module.exports = {
   },
   uploadImage: function(req, res) {
     if (req.file) {
-      console.log("req.file detected");
       let filename = req.file.filename;
       db.Event.update(
         { event_date_picture: `/images/${filename}` },

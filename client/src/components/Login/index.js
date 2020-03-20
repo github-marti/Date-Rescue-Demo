@@ -31,7 +31,6 @@ const Login = function () {
     event.preventDefault();
     axios.post('/api/login', user)
       .then(res => {
-        console.log(state);
         dispatch({
           type: LOGIN_USER,
           username: res.data.username,

@@ -44,7 +44,6 @@ module.exports = {
             })
     },
     update: function (req, res) {
-        console.log('shortid in update', req.shortid);
         db.Call.update({
             call_time: req.body.call_time,
             call_type: req.body.call_type,

@@ -13,7 +13,6 @@ function ViewCard() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
-        console.log("triggering handleclose....")
         setShow(false)};
     const handleShow = () => setShow(true);
 
@@ -24,8 +23,6 @@ function ViewCard() {
     }
 
     function handleSearchChange(event) {
-        console.log(event.target.value);
-        console.log("this is state: ", state )
         const filter = event.target.value;
         const filteredList = state.locations.filter(location => {
             let values = Object.values(location)
@@ -33,7 +30,6 @@ function ViewCard() {
         .toLowerCase();
         return values.indexOf(filter.toLowerCase()) !== -1;
         });
-        console.log(filteredList)
         setLocation(filteredList);
         event.preventDefault();   
     }
@@ -45,7 +41,6 @@ function ViewCard() {
                 type: "SET_LOCATION",
                 locations: data.data
             })
-            console.log(data.data)
         })
     }, [likebtn, show, dispatch])
 

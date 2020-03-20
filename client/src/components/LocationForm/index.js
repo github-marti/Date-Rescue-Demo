@@ -11,10 +11,8 @@ function CreateLocation(props) {
         
         let obj = {}
         for(let p of data) {
-            console.log(p[0],p[1]);
             obj[p[0]] = p[1];
         }
-        console.log(obj)
         API.saveLocation(obj);
         props.handleClose();
     }
