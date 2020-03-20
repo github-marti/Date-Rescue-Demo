@@ -1,5 +1,9 @@
+body {
+    height: 100vh;
+}
+
 .bcg1 {
-    height: 100%;
+    height: 100vh;
     background-image: url(couple-on-date4.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -13,6 +17,28 @@ h6 {
     text-align: center;
 }
 
+.clearfix {
+    overflow: hidden;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .btn1 {
-    margin: 15px
+    margin: 15px;
+    text-align: center;
+    float: right;
+}
+
+.btn2 {
+    float: left;
+}
+
+.error {
+    color: red;
+    font-style: italic;
+    text-align: center;
 }

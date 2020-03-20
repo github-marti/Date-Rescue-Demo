@@ -9,6 +9,7 @@ import { LOGIN_USER } from '../../utils/actions';
 const Login = function () {
 
   const [user, setUser] = useState();
+  const [error, setError] = useState(false);
   const [redirect, setRedirect] = useState({
     home: false,
     signup: false
@@ -42,7 +43,8 @@ const Login = function () {
         });
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
+        setError(true);
       })
   };
 
@@ -70,7 +72,7 @@ const Login = function () {
         <Container className="login">
           <div>
             <Col sm="12" md={{ size: 6, offset: 3 }}>
-              <Form className="form" onSubmit={handleFormSubmit}>
+              <Form className={"form clearfix"} onSubmit={handleFormSubmit}>
                 <Col>
                   <h2>Log In</h2>
                   <FormGroup>
@@ -94,7 +96,8 @@ const Login = function () {
                     />
                   </FormGroup>
                 </Col>
-                <h6>Not a member? <i className="click" color="light" onClick={handleClick}>Click Here</i></h6>
+                {error ? <p className="error">Username or password is incorrect.</p> : <div />}
+                <Button className="btn2" color="secondary" onClick={handleClick}>Sign Up</Button>
                 <Button className="btn1" color="success">Log In</Button>
               </Form>
             </Col>
