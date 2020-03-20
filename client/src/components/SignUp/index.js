@@ -43,7 +43,7 @@ function SignUp() {
 
   const renderRedirect = () => {
     if (redirect) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/" />;
     }
   };
 
@@ -102,6 +102,7 @@ function SignUp() {
               <Button type="submit" className="btn" color="success">
                 Join Today
               </Button>
+              <a href="/login">Back</a>
             </Form>
           </Col>
         </row>
