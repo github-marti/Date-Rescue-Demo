@@ -13,10 +13,10 @@ function DeleteModal(props) {
                 <p>Only click if you're sure!</p> 
             </ModalBody>
             <ModalFooter>
-                <Button variant="secondary" name="cancel" onClick={props.handleClose}>
+                <Button variant="secondary" name="delete" onClick={props.handleClose}>
                     Go Back
                 </Button>
-                <Button variant="primary" name="cancel" onClick={props.handleDelete}>
+                <Button variant="primary" name="delete" onClick={props.handleDelete}>
                     Delete Date
                 </Button>
             </ModalFooter>

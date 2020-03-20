@@ -41,6 +41,7 @@ function EventCard(props) {
   };
 
   const handleClose = event => {
+    console.log('click');
     let name = event.target.name;
     if (name === "update") {
       setUpdateShow(false);
