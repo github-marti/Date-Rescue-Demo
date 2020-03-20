@@ -36,13 +36,7 @@ const reducer = (state, action) => {
         ...state,
         username: ''
       }
-
-    case SET_RELOAD:
-      return {
-        ...state,
-        reload: !state.reload
-      }
-
+      
     case SET_LOCATION:
       return {
         ...state,
@@ -200,6 +194,7 @@ const StoreProvider = ({ value = [], ...props }) => {
       });
     },
     handleCallTime: time => {
+      console.log("CALL TIME", time);
       dispatch({
         type: UPDATE_EVENT,
         column: "call_time",

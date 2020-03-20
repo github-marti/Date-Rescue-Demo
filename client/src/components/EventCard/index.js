@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Moment from "react-moment";
 import CopyLink from "../CopyLink";
 import UpdateModal from "../UpdateModal";
@@ -6,7 +6,7 @@ import CancelModal from "../CancelModal";
 import DeleteModal from "../DeleteModal";
 import { Card, CardBody } from "reactstrap";
 import { useStoreContext } from "../../utils/GlobalState";
-import { SET_NEW_EVENT, SET_RELOAD } from "../../utils/actions";
+import { SET_NEW_EVENT } from "../../utils/actions";
 import API from "../../utils/eventAPI";
 import "./style.css";
 
@@ -15,8 +15,6 @@ function EventCard(props) {
   const [updateShow, setUpdateShow] = useState(false);
   const [cancelShow, setCancelShow] = useState(false);
   const [deleteShow, setDeleteShow] = useState(false);
-
-  useEffect(() => {}, [state.reload]);
 
   const handleShow = event => {
     let name = event.target.name;
@@ -87,9 +85,7 @@ function EventCard(props) {
         let updatedImage = API.saveImage(props.id, formData);
         API.updateEvent(props.id, { event_date_picture: updatedImage.data });
       }
-      dispatch({
-        type: SET_RELOAD
-      });
+      window.location.reload(false);
       setUpdateShow(false);
     } catch (err) {
       console.log(err);
@@ -103,9 +99,7 @@ function EventCard(props) {
         API.cancelCall(props.id, props.callid)
           .then(() => {
             setCancelShow(false);
-            dispatch({
-              type: SET_RELOAD
-            });
+            window.location.reload(false);
           })
           .catch(err => {
             console.log(err);
@@ -118,25 +112,23 @@ function EventCard(props) {
 
   const handleDelete = event => {
     event.preventDefault();
-    API.deleteEvent(props.id)
-      .then(() => {
-        setDeleteShow(false);
-        dispatch({
-          type: SET_RELOAD
+    API.cancelCall(props.id, props.callid).then(() => {
+      API.deleteEvent(props.id)
+        .then(() => {
+          setDeleteShow(false);
+          window.location.reload(false);
+        })
+        .catch(err => {
+          console.log(err);
         });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    });
   };
 
   const cancelCall = () => {
     API.cancelCall(props.id, props.callid)
       .then(() => {
         setCancelShow(false);
-        dispatch({
-          type: SET_RELOAD
-        });
+        window.location.reload(false);
       })
       .catch(err => {
         console.log(err);

@@ -27,6 +27,7 @@ const getUpcoming = () => {
         .then(results => {
             if (results) {
                 const upcomingCall = Date.parse(`${results.Event.event_date.split('T')[0]}T${results.call_time}:00.000`);
+                console.log('UPCOMING CALL', upcomingCall);
                 const currentTime = Date.parse(new Date());
                 const callid = results.shortid;
                 const phoneNumber = results.Event.User.phoneNumber;

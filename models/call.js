@@ -8,9 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     call_type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-
+      type: DataTypes.STRING
     },
     shortid: {
       type: DataTypes.STRING,

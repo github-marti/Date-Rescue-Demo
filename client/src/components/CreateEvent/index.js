@@ -81,7 +81,7 @@ function CreateEvent() {
             <div><input className="form-control" type="text" name="event_name" required onChange={state.handleInputChange} /></div>
             <label className="font-weight-bold"> Set Date Time</label>
             <div>
-                <DatePicker className="mr-8" value={state.newEvent && state.newEvent.event_date ? new Date(state.newEvent.event_date) : null} onChange={state.handleDateChange} minDate={new Date()} />
+                <DatePicker className="mr-8" value={state.newEvent && state.newEvent.event_date ? state.newEvent.event_date : new Date()} onChange={state.handleDateChange} minDate={new Date()} />
                 <TimePicker onChange={state.handleTimeChange} disableClock={true} />
             </div>
             <label className="font-weight-bold">Set Date Location</label>

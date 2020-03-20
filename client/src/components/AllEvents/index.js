@@ -18,7 +18,7 @@ function AllEvents() {
                     })
                 };
             })
-    }, [state.reload, state.userid, dispatch]);
+    }, [state.userid, dispatch]);
 
     return (
         <div style={{}}>
