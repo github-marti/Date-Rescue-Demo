@@ -19,7 +19,7 @@ export default {
   },
   // Saves image to public/images
   saveImage: function(eventid, formData) {
-    return axios.post(`/api/events/${eventid}/images`, formData, {
+    return axios.post(`/api/events/${eventid}/image`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
     });
   },
