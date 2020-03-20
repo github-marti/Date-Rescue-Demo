@@ -17,6 +17,7 @@ function EventCard(props) {
   const [deleteShow, setDeleteShow] = useState(false);
 
   const handleShow = event => {
+    console.log(props);
     let name = event.target.name;
     if (name === "update") {
       dispatch({
@@ -53,6 +54,8 @@ function EventCard(props) {
   const handleUpdate = async event => {
     try {
       event.preventDefault();
+
+      // first we update the event
       let eventData = {
         event_date: state.newEvent.event_date,
         event_location: state.newEvent.event_location,
@@ -60,8 +63,9 @@ function EventCard(props) {
         event_note: state.newEvent.event_note,
         event_time: state.newEvent.event_time
       };
-      let eventImage = document.getElementById("event_image").files[0];
       let updatedEvent = await API.updateEvent(props.id, eventData);
+
+      // then we either update or create a call depending on whether one already existed
       if (state.newEvent.call_time || state.newEvent.call_type) {
         if (props.call_time) {
           API.updateCall(props.id, props.callid, {
@@ -77,14 +81,19 @@ function EventCard(props) {
             event_date: state.newEvent.event_date,
             event_time: state.newEvent.event_time
           });
-        }
-      }
+        };
+      };
+
+      // finally we update the image if necessary
+      let eventImage = document.getElementById("event_image").files[0];
       if (eventImage && updatedEvent.data) {
         let formData = new FormData();
         formData.append("image", eventImage);
         let updatedImage = API.saveImage(props.id, formData);
         API.updateEvent(props.id, { event_date_picture: updatedImage.data });
-      }
+      };
+
+      // reload the page on completion
       window.location.reload(false);
       setUpdateShow(false);
     } catch (err) {

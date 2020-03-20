@@ -3,7 +3,6 @@ import { useStoreContext } from '../../utils/GlobalState';
 import API from '../../utils/eventAPI';
 import EventCard from '../EventCard';
 import { SET_ALL_EVENTS } from '../../utils/actions';
-import './style.css';
 
 function AllEvents() {
     const [state, dispatch] = useStoreContext();
